@@ -1,0 +1,151 @@
+{
+	"pages": [
+		{
+		"path": "pages/index/index",
+		"style": 
+			{
+			"navigationBarTitleText": "欢迎页"
+			}
+		}    
+		,{
+			"path" : "pages/index/Login",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "登录页",
+				"enablePullDownRefresh": false
+			}
+			
+		}
+		,{
+			"path" : "pages/index/SignUp",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "注册页",
+				"enablePullDownRefresh": false
+			}
+			
+		}
+        
+        ,{
+            "path" : "pages/main/message/message",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "消息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/main/contacts/contacts",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "通讯录",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/main/find/find",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "发现",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/main/me/me",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#ffffff",
+		"app-plus": {
+			"background": "#55aaff",
+			"titleNView":{
+				"buttons":[
+					{
+						"text":"\ue7c0",
+						"fontSrc":"/static/uni.ttf",
+						"fontSize":"20px"
+					},
+					{
+						"text":"\ue7c0",
+						"fontSrc":"/static/uni.ttf",
+						"fontSize":"20px"
+					}
+				]
+			}
+		}
+	},
+	"tabBar":{
+		"color": "#cdcdcd",
+		"selectedColor": "#39cffc",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list":[
+				{
+					"pagePath":"pages/main/message/message",
+					"iconPath":"static/template.png",
+					"selectedIconPath":"static/templateHL.png",
+					"text":"消息"
+				},
+				{
+					"pagePath":"pages/main/contacts/contacts",
+					"iconPath":"static/template.png",
+					"selectedIconPath":"static/templateHL.png",
+					"text":"通讯录"
+				},
+				{
+					"pagePath":"pages/main/find/find",
+					"iconPath":"static/template.png",
+					"selectedIconPath":"static/templateHL.png",
+					"text":"发现"
+				},
+				{
+					"pagePath":"pages/main/me/me",
+					"iconPath":"static/template.png",
+					"selectedIconPath":"static/templateHL.png",
+					"text":"我"
+				}
+			]
+	},
+	"condition":{
+		"current":0,
+		"list":[
+			{
+				"name":"首页",
+				"path":"pages/index/index",
+				"query":""
+			},
+			{
+				"name":"消息",
+				"path":"pages/main/message/message",
+				"query":""
+			},
+			{
+				"name":"通讯录",
+				"path":"pages/main/contacts/contacts",
+				"query":""
+			},
+			{
+				"name":"发现",
+				"path":"pages/main/find/find",
+				"query":""
+			},
+			{
+				"name":"我",
+				"path":"pages/main/me/me",
+				"query":""
+			}
+		]
+	}
+}
