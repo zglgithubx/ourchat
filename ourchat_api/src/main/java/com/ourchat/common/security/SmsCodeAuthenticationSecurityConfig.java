@@ -1,4 +1,4 @@
-package com.ourchat.system.login.security;
+package com.ourchat.common.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

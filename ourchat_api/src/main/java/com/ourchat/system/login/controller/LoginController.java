@@ -1,5 +1,8 @@
-package com.ourchat.system.login.validatecode;
+package com.ourchat.system.login.controller;
 
+import com.ourchat.common.validatecode.DefaultSmsCodeSender;
+import com.ourchat.common.validatecode.SmsCodeGenerator;
+import com.ourchat.common.validatecode.ValidateCode;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -7,9 +10,9 @@ import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-@Api(description = "验证码API")
+@Api(description = "登录API")
 @RestController
-public class ValidateCodeController {
+public class LoginController {
     @Autowired
     private SmsCodeGenerator smsCodeGenerator;
     @Autowired
@@ -23,6 +26,5 @@ public class ValidateCodeController {
     }
     @PostMapping("/authentication/mobile")
     public void validateSmsCode(@RequestParam String mobile,@RequestParam String password, @RequestParam String smsCode){
-        System.out.println("我进入了validateSmsCode方法");
     }
 }

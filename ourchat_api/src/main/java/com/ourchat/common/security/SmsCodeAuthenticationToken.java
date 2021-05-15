@@ -1,4 +1,4 @@
-package com.ourchat.system.login.security;
+package com.ourchat.common.security;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,7 +9,7 @@ import java.util.Collection;
 public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
     private final Object principal;
-    private Object credentials;
+    private  Object credentials;
 
 
     public SmsCodeAuthenticationToken(String mobile,String password) {

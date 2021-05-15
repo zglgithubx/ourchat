@@ -1,4 +1,4 @@
-package com.ourchat.system.login.security;
+package com.ourchat.common.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -22,7 +22,6 @@ public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         SmsCodeAuthenticationToken smsCodeAuthenticationToken = (SmsCodeAuthenticationToken) authentication;
-        System.out.println(smsCodeAuthenticationToken.getPrincipal());
         UserDetails user = userDetailsService.loadUserByUsername((String)smsCodeAuthenticationToken.getPrincipal());
         if(user == null){
             throw new InternalAuthenticationServiceException("用户不存在");

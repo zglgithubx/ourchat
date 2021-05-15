@@ -1,4 +1,4 @@
-package com.ourchat.system.login.validatecode;
+package com.ourchat.common.validatecode;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -22,7 +22,6 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain)
             throws ServletException, IOException {
-        System.out.println("我进入了doFilterInternal方法");
         if(StringUtils.equals("/authentication/mobile", httpServletRequest.getRequestURI()) && StringUtils.equalsIgnoreCase(httpServletRequest.getMethod(), "post")){
             try {
                 validateSmsCode(httpServletRequest,httpServletRequest.getSession());

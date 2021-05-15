@@ -1,4 +1,4 @@
-package com.ourchat.system.login.security;
+package com.ourchat.common.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

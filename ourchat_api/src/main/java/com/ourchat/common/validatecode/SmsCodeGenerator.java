@@ -1,4 +1,4 @@
-package com.ourchat.system.login.validatecode;
+package com.ourchat.common.validatecode;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;

@@ -1,20 +1,33 @@
 package com.ourchat.common.redis;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ourchat.system.login.mapper.UserMapper;
 import com.ourchat.system.message.entity.OfflineMessage;
 import com.ourchat.common.redis.GetBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 离线消息管理
  */
+@ComponentScan(value = "common/redis")
+@Component
 public class OfflineManagement {
     private static final String RECEIVER="RECEIVER:";
+
     private static RedisTemplate redisTemplate=(RedisTemplate) GetBean.getBean("redisTemplate");
+
+    @Autowired
+    UserMapper userMapper;
     /**
      * 新增消息
      */

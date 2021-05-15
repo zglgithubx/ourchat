@@ -1,6 +1,6 @@
-package com.ourchat.system.login.security;
+package com.ourchat.common.security;
 
-import com.ourchat.system.login.validatecode.ValidateCodeFilter;
+import com.ourchat.common.validatecode.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -39,23 +39,6 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-resources/configuration/security",
                 "/swagger-ui.html");
     }
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter();
-//        validateCodeFilter.setAuthenticationFailureHandler(myAuthenticationFailureHandler);
-//        http.authorizeRequests()
-//            //允许swagger-ui.html访问
-//
-//            .anyRequest().authenticated()
-//            .and()
-//                .logout().permitAll()
-//            .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll();
-//        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class);
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter();

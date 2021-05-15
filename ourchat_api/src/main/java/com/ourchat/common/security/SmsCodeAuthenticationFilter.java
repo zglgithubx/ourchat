@@ -1,4 +1,4 @@
-package com.ourchat.system.login.security;
+package com.ourchat.common.security;
 
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;

@@ -1,4 +1,4 @@
-package com.ourchat.system.login.security;
+package com.ourchat.common.security;
 
 import com.ourchat.system.login.mapper.UserMapper;
 
@@ -31,8 +31,6 @@ public class MyUserDetailService implements UserDetailsService {
         if (customer == null) {
             throw new UsernameNotFoundException("账户不存在");
         }
-        System.out.println(customer.getPassword()+"//"+customer.getPhoneNumber());
-//        return new User(customer.getPhoneNumber(),customer.getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
         return new User(customer.getPhoneNumber(),bCryptPasswordEncoder.encode(customer.getPassword()),AuthorityUtils.NO_AUTHORITIES);
     }
 }

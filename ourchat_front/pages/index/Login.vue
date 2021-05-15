@@ -25,7 +25,6 @@
 		</div>
 	</view>
 </template>
-
 <script>
 	import {connectWebSocket} from "../../store/useSocket.js"; //引入socket.js 重要
 	export default {
@@ -58,7 +57,6 @@
 							uni.reLaunch({
 								url:ur+"?mobile="+mobile
 							})
-							// this.$Socket.nsend(mobile);
 						})
 						
 					}

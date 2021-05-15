@@ -1,4 +1,4 @@
-package com.ourchat.system.login.validatecode;
+package com.ourchat.common.validatecode;
 
 public class SimpleResponse {
     private Object content;

@@ -1,12 +1,6 @@
 <template>
 	
 	<view>
-		<!-- <view>
-		  <view class="status_bar">
-			  这里是状态栏
-		  </view>
-		  <view> 状态栏下的文字 </view>
-		</view> -->
 		<div>
 			<view class="uni-padding-wrap uni-common-mt" style="padding:20px">
 				<view class="uni-form-item uni-column">
@@ -33,7 +27,6 @@
 				</view>
 			</view>
 		</div>
-		
 	</view>
 </template>
 

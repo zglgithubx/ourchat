@@ -1,7 +1,7 @@
-package com.ourchat.system.login.security;
+package com.ourchat.common.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ourchat.system.login.validatecode.SimpleResponse;
+import com.ourchat.common.validatecode.SimpleResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
