@@ -33,11 +33,13 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     public void configure(WebSecurity web){
-        web.ignoring().antMatchers("/v2/api-docs",
-                "/swagger-resources/configuration/ui",
-                "/swagger-resources",
-                "/swagger-resources/configuration/security",
-                "/swagger-ui.html");
+        //所需要用到的静态资源，允许访问
+        web.ignoring().antMatchers( "/swagger-ui.html",
+                "/swagger-ui/*",
+                "/swagger-resources/**",
+                "/v2/api-docs",
+                "/v3/api-docs",
+                "/webjars/**");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -45,9 +47,6 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
         validateCodeFilter.setAuthenticationFailureHandler(myAuthenticationFailureHandler);
         http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/","/v2/api-docs", "/swagger-resources/configuration/ui",
-                        "/swagger-resources", "/swagger-resources/configuration/security",
-                        "/swagger-ui.html", "/webjars/**").permitAll()
                 .antMatchers("/#/pages/index/Login").permitAll()
                 .antMatchers("/code/*").permitAll()
                 .anyRequest()
@@ -57,12 +56,6 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/#/pages/index/Login")
                 .loginProcessingUrl("/authentication/mobile")
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/#/pages/index/Login").permitAll()
-//                .antMatchers("/code/*").permitAll()
-//                .anyRequest()
-//                .authenticated()
                 .and()
                 .csrf().disable()
                 //把SmsCodeAuthenticationSecurityConfig配置加进来
