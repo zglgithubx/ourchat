@@ -2,7 +2,7 @@
 export default{
 	 user:{
 		 login:{
-			 url:'/authentication/mobile',
+			 url:'/authentication/email',
 			 auth:false,
 			 method:'POST'
 		 },
@@ -15,6 +15,11 @@ export default{
 			 url:'/userLogin',
 			 auth:false,
 			 method:'GET'
+		 },
+		 uploadImage:{
+			 url:'/upload',
+			 auth:false,
+			 method:'UPLOAD'
 		 }
 	 }
 }

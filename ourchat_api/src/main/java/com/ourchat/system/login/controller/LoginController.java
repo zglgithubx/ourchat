@@ -20,13 +20,13 @@ public class LoginController {
     private DefaultSmsCodeSender defaultSmsCodeSender;
     @ApiOperation("发送验证码")
     @GetMapping("/code/sms")
-    public void createSmsCode(HttpServletRequest request, HttpSession session, @RequestParam String mobile){
-        ValidateCode smsCode=smsCodeGenerator.generate(new ServletWebRequest(request));
-        session.setAttribute(mobile,smsCode);
-        defaultSmsCodeSender.send(mobile,smsCode.getCode());
+    public void createSmsCode(HttpServletRequest request, HttpSession session, @RequestParam String email){
+        ValidateCode smsCode=smsCodeGenerator.generate(new ServletWebRequest(request),email);
+        session.setAttribute(email,smsCode);
+        defaultSmsCodeSender.send(email,smsCode.getCode());
     }
     @ApiOperation("登录验证")
     @PostMapping("/authentication/mobile")
-    public void validateSmsCode(@RequestParam String mobile,@RequestParam String password, @RequestParam String smsCode){
+    public void validateSmsCode(@RequestParam String email,@RequestParam String password, @RequestParam String smsCode){
     }
 }

@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
-    public static final String SPRING_SECURITY_FROM_MOBILE="mobile";
+    public static final String SPRING_SECURITY_FROM_MOBILE="email";
     private String mobileParameter=SPRING_SECURITY_FROM_MOBILE;
     private boolean postOnly=true;
     public SmsCodeAuthenticationFilter(){
-        super(new AntPathRequestMatcher("/authentication/mobile"));
+        super(new AntPathRequestMatcher("/authentication/email"));
     }
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
@@ -23,12 +23,12 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
             throw new AuthenticationServiceException(
                     "Authentication method not supported: " + request.getMethod());
         }
-        String mobile = obtainMobile(request);
-        if (mobile == null) {
-            mobile = "";
+        String email = obtainMobile(request);
+        if (email == null) {
+            email = "";
         }
-        mobile = mobile.trim();
-        SmsCodeAuthenticationToken authRequest = new SmsCodeAuthenticationToken(mobile,obtainPassowrd(request));
+        email = email.trim();
+        SmsCodeAuthenticationToken authRequest = new SmsCodeAuthenticationToken(email,obtainPassowrd(request));
         // Allow subclasses to set the "details" property
         setDetails(request, authRequest);
         return this.getAuthenticationManager().authenticate(authRequest);
@@ -51,7 +51,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
     }
 
     public void setUsernameParameter(String mobileParameter) {
-        Assert.hasText(mobileParameter, "mobile parameter must not be empty or null");
+        Assert.hasText(mobileParameter, "email parameter must not be empty or null");
         this.mobileParameter = mobileParameter;
     }
 

@@ -24,7 +24,8 @@ export default function api(url, data = {}) {
 
 	request.interceptor.response((response) => { /* 请求之后拦截器 */
 		// if(store.state.envVersion!='release'){
-			console.log('客户端收到', response.config.url, response,new Date().valueOf());
+			console.log("服务端响应:",response)
+			// console.log('客户端收到', response.config.url, response,new Date().valueOf());
 		// }
 		if (response.errMsg == "request:fail timeout") {
 			uni.showToast({
@@ -48,7 +49,10 @@ export default function api(url, data = {}) {
 			uni.removeStorageSync('token');
 			uni.removeStorageSync('user_id');
 			store.commit('LOGIN_TIP', true)
+		}else if(response.data.token!=undefined){
+			uni.setStorageSync("token",response.data.token)
 		}
+		
 		// if (response.config.custom.verification) { // 演示自定义参数的作用
 		//   return response.data
 		// }

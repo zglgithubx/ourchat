@@ -1,17 +1,7 @@
 <template>
-	<view>
-		<view>上传图片{{imageList.length}}/{{count}}</view>
-		<view class="uni-list list-pd">
-			<view class="uni-uploader__files">
-				<block v-for="(image,index) in imageList" :key="index">
-					<view class="uni-uploader__file">
-						<image class="uni-uploader__img" :src="image" :data-src="image" @tap="previewImage"></image>
-					</view>
-				</block>
-				<view class="uni-uploader__input-box">
-					<view class="uni-uploader__input" @tap="chooseImage"></view>
-				</view>
-			</view>
+	<view class="wrap">
+		<view class="u-avatar-wrap">
+			<u-avatar class="u-avatar-demo" :src="imageSrc" mode="square" size="160" bg-color="#ffffff" @tap="chooseAvatar"></u-avatar>
 		</view>
 	</view>
 </template>
@@ -22,89 +12,66 @@
 		data() {
 			return {
 				imageList:[],
-				count:3,//能上传的最大数量
+				imageSrc:"",
+				count:1,//能上传的最大数量
+				text:"上传头像"
 			};
 		},
+		created() {
+			// 监听从裁剪页发布的事件，获得裁剪结果
+			uni.$on('uAvatarCropper', path => {
+				this.imageSrc = path;
+				// 可以在此上传到服务端
+				// uni.uploadFile({
+				// 	url: 'http://www.example.com/upload',
+				// 	filePath: path,
+				// 	name: 'file',
+				// 	complete: (res) => {
+				// 		console.log(res);
+				// 	}
+				// });
+			})
+		},
 		methods:{
-			async chooseImage(){
-				const _self=this;
-				if(_self.imageList.length===_self.count){
-					let isContinue=await _self.isFullImag();
-					if(!isContinue){
-						return;
+			chooseAvatar() {
+				// 此为uView的跳转方法，详见"文档-JS"部分，也可以用uni的uni.navigateTo
+				this.$u.route({
+					// 关于此路径，请见下方"注意事项"
+					url: '/node_modules/uview-ui/components/u-avatar-cropper/u-avatar-cropper',
+					// 内部已设置以下默认参数值，可不传这些参数
+					params: {
+						// 输出图片宽度，高等于宽，单位px
+						destWidth: 300,
+						// 裁剪框宽度，高等于宽，单位px
+						rectWidth: 300,
+						// 输出的图片类型，如果'png'类型发现裁剪的图片太大，改成"jpg"即可
+						fileType: 'jpg',
 					}
-				}
-			
-				uni.chooseImage({
-					sourceType:['camera','album'],
-					sizeType:['original','compressed'],
-					count:_self.count,
-					success:(res)=>{
-						const tempFilePaths=res.tempFilePaths;//获取到本地图片地址
-						//上传图片
-						const uploadTask=uni.uploadFile({
-							url:'http://localhost:8013/123123',
-							filePath:temFilePaths[0],
-							name:'file',
-							header:{
-								'Authorization':token
-							},
-							formData:{
-								'user':'test'
-							},
-							success:function(res){
-								let toJsonRes=JSON.parse(res.data)//获取到后台处理过的地址
-								let list=[]
-								list.path("http://xxxx"+toJsonRes.data)
-								_self.imageList=_self.imageList.concat(list);
-							}
-						})
-					}
-				})
-			},
-			isFullImg(){
-				return new Promise((res)=>{
-					uni.showModal({
-						content: "已经有"+this.count+"张图片了,是否清空现有图片？",
-						success: (e) => {
-							if (e.confirm) {
-								this.imageList = [];
-							} else {
-								
-							}
-						},
-						fail: () => {
-							res(false)
-						}
-						
-					})
-				})
-			},
-			previewImage(e){
-				let current=e.target.dataset.src
-				 uni.previewImage({
-					 current:current,
-					 urls:this.imageList
-				 })
-			},
-			delImage(e){
-				uni.showModal({
-					title: '删除照片',
-					content: '确定要删除这张照片吗？',
-					cancelText: '取消',
-					confirmText: '确定',
-					success: res => {
-						if (res.confirm) {
-							this.imageList.splice(e.currentTarget.dataset.index, 1);
-						}
-					}
-			
 				})
 			}
 		}
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
+	.wrap {
+		padding: 40rpx;
+	}
 
+	.u-avatar-wrap {
+		margin-top: 80rpx;
+		overflow: hidden;
+		margin-bottom: 80rpx;
+		text-align: center;
+	}
+
+	.u-avatar-demo {
+		width: 150rpx;
+		height: 150rpx;
+		border-radius: 10rpx;
+	}
+	.u-avatar-wrap[data-v-371a9e22]{
+		margin:32px 0;
+		
+	}
 </style>

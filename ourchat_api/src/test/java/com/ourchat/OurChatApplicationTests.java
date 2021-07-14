@@ -1,23 +1,24 @@
 package com.ourchat;
 
-import com.ourchat.system.login.mapper.UserMapper;
-import com.ourchat.system.login.entity.Customer;
+import com.ourchat.common.email.MailServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.RedisTemplate;
+
+import java.util.List;
 
 @SpringBootTest
 class OurChatApplicationTests {
     @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    RedisTemplate redisTemplate;
+    private MailServiceImpl mailService;
+
     @Test
     void contextLoads() {
-//        Customer customer = userMapper.getUserByPhoneNumber("1");
-        System.out.println(redisTemplate);
-        System.out.println(userMapper.getUserByPhoneNumber("1"));
+        try {
+            mailService.sendSimpleMail("2066035486@qq.com","OurChat","这周日你有空吗?   来自：新乡交际花");
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
 
     }
 }

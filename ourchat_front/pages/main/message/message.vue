@@ -41,7 +41,7 @@
 			}
 		},
 		onLoad(obj){
-			this.$data.myId=obj.mobile;
+			this.$data.myId=obj.email;
 			this.$Socket.nsend(this.$data.myId);
 		},
 		onShow(){
@@ -62,7 +62,14 @@
 				
 			},
 			test(){
-				this.$api("user.test");
+				this.$api("user.test").then(res=>{
+					if(res.errorMsg!=undefined){
+						uni.reLaunch({
+							url:"/pages/index/Login"
+						})
+						this.$Socket.nclose();
+					}
+				});
 			}
 		}
 	}

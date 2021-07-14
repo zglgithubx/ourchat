@@ -3,13 +3,13 @@
 		<div>
 			<view class="uni-padding-wrap uni-common-mt" style="padding:20px">
 				<view class="uni-form-item uni-column">
-					<view class="title">请输入ID</view>
-					<input class="uni-input" type="text" placeholder="请输入" v-model="phonenumber"/>
+					<view class="title">请输入邮箱</view>
+					<input class="uni-input" type="email" placeholder="请输入" v-model="email"/>
 				</view>
 				<br>
 				<view class="uni-form-item uni-column">
 					<view class="title">请输入密码</view>
-					<input class="uni-input" type="text" placeholder="请输入" v-model="password"/>
+					<input class="uni-input" type="password" placeholder="请输入" v-model="password"/>
 				</view>
 				<br>
 				<view class="uni-form-item uni-column">
@@ -28,34 +28,33 @@
 <script>
 	import {connectWebSocket} from "../../store/useSocket.js"; //引入socket.js 重要
 	export default {
-		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
-				this.phonenumber=option.phonenumber;
-				this.password=option.password;
+		onLoad: function (option) { 
+			//option为object类型，会序列化上个页面传递的参数
+			// this.phonenumber=option.phonenumber;
+			// this.password=option.password;
 		},
 		data() {
 			return {
-				phonenumber:'',
-				password:'',
-				code:'',
+				email:'786945363@qq.com',
+				password:'qwe123',
+				code:'1111',
 			}
 		},
 		methods: {
 			sendCode(){
-				var phone=this.phonenumber;
-				this.$api("user.sendCode",{mobile:phone}).then(res=>{
+				var that=this;
+				this.$api("user.sendCode",{email:that.email}).then(res=>{
 					console.log("发送验证码成功");
 				})
 			},
 			login(ur){
-				var sms=this.code;
-				var mobile=this.phonenumber;
-				var password=this.password;
-				this.$api("user.login",{smsCode:sms,mobile:mobile,password:password}).then(res=>{
+				var that=this;
+				this.$api("user.login",{smsCode:that.code,email:that.email,password:that.password}).then(res=>{
 					if(res.content==undefined){
 						connectWebSocket()
 						this.$Socket.eventPatch.onOpen((msg,sk)=>{
 							uni.reLaunch({
-								url:ur+"?mobile="+mobile
+								url:ur+"?email="+that.email
 							})
 						})
 						

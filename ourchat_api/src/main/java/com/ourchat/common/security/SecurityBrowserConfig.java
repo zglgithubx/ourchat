@@ -49,13 +49,15 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/#/pages/index/Login").permitAll()
                 .antMatchers("/code/*").permitAll()
+                .antMatchers("/sign-up").permitAll()
+                .antMatchers("/src/main/*").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 //在UsernamePasswordAuthenticationFilter之前加上验证码过滤器
                 .formLogin()
                 .loginPage("/#/pages/index/Login")
-                .loginProcessingUrl("/authentication/mobile")
+                .loginProcessingUrl("/authentication/email")
                 .and()
                 .csrf().disable()
                 //把SmsCodeAuthenticationSecurityConfig配置加进来

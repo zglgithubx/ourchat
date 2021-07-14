@@ -12,9 +12,9 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
     private  Object credentials;
 
 
-    public SmsCodeAuthenticationToken(String mobile,String password) {
+    public SmsCodeAuthenticationToken(String email,String password) {
         super(null);
-        this.principal = mobile;
+        this.principal = email;
         this.credentials=password;
         setAuthenticated(false);
     }
@@ -44,8 +44,6 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
 
         super.setAuthenticated(false);
     }
-
-
     @Override
     public void eraseCredentials() {
         super.eraseCredentials();

@@ -1,4 +1,7 @@
 {
+	"easycom": {
+			"^u-(.*)": "node_modules/uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [
 		{
 		"path": "pages/index/index",
@@ -24,7 +27,15 @@
 				"enablePullDownRefresh": false
 			}
 			
+		},
+		{
+			"path":"node_modules/uview-ui/components/u-avatar-cropper/u-avatar-cropper",
+			"style":{
+				"navigationBarTitleText":"头像裁剪",
+				"navigationBarBackgroundColor":"#ffffff"
+			}
 		}
+		
         
         ,{
             "path" : "pages/main/message/message",

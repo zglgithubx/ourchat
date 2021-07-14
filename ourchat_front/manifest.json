@@ -1,32 +1,50 @@
 {
+    "@platforms" : [ "android", "iPhone", "iPad" ],
+    "id" : "__UNI__93A811E",
     "name" : "test",
-    "appid" : "__UNI__93A811E",
-    "description" : "",
-    "versionName" : "1.0.0",
-    "versionCode" : "100",
-    "transformPx" : false,
-    "networkTimeout" : {
-        "connectSocket" : 6000
+    "version" : {
+        "name" : "1.0.0",
+        "code" : "100"
     },
-    "app-plus" : {
-        /* 5+App特有相关 */
-        "usingComponents" : true,
-        "nvueCompiler" : "uni-app",
+    "description" : "",
+    "launch_path" : "__uniappview.html",
+    "developer" : {
+        "name" : "",
+        "email" : "",
+        "url" : ""
+    },
+    "permissions" : {
+        "Webview-x5" : {},
+        "SQLite" : {},
+        "UniNView" : {
+            "description" : "UniNView原生渲染"
+        }
+    },
+    "plus" : {
+        "useragent" : {
+            "value" : "uni-app",
+            "concatenate" : true
+        },
         "splashscreen" : {
-            "alwaysShowBeforeRender" : true,
-            "waiting" : true,
+            "target" : "id:1",
             "autoclose" : true,
+            "waiting" : true,
             "delay" : 0
         },
-        "modules" : {
-            "Webview-x5" : {},
-            "SQLite" : {}
+        "popGesture" : "close",
+        "launchwebview" : {
+            "id" : "1",
+            "kernel" : "WKWebview"
         },
-        /* 模块配置 */
+        "statusbar" : {
+            "immersed" : "supportedDevice",
+            "style" : "dark",
+            "background" : "#F8F8F8"
+        },
+        "usingComponents" : true,
+        "nvueCompiler" : "uni-app",
         "distribute" : {
-            /* 应用发布信息 */
-            "android" : {
-                /* android打包配置 */
+            "google" : {
                 "permissions" : [
                     "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
@@ -45,27 +63,68 @@
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
                 ]
             },
-            "ios" : {},
-            /* ios打包配置 */
-            "sdkConfigs" : {
-                "ad" : {}
+            "apple" : {},
+            "plugins" : {
+                "ad" : {},
+                "audio" : {
+                    "mp3" : {
+                        "description" : "Android平台录音支持MP3格式文件"
+                    }
+                }
             }
-        }
-    },
-    /* SDK配置 */
-    "quickapp" : {},
-    /* 快应用特有相关 */
-    "mp-weixin" : {
-        /* 小程序特有相关 */
-        "appid" : "",
-        "setting" : {
-            "urlCheck" : false
         },
-        "usingComponents" : true
+        "allowsInlineMediaPlayback" : true,
+        "safearea" : {
+            "background" : "#ffffff",
+            "bottom" : {
+                "offset" : "auto"
+            }
+        },
+        "uni-app" : {
+            "compilerVersion" : "3.1.12",
+            "control" : "uni-v3",
+            "nvueCompiler" : "uni-app",
+            "renderer" : "auto",
+            "nvue" : {
+                "flex-direction" : "column"
+            },
+            "nvueLaunchMode" : "normal"
+        },
+        "tabBar" : {
+            "color" : "#cdcdcd",
+            "selectedColor" : "#39cffc",
+            "borderStyle" : "rgba(0,0,0,0.4)",
+            "backgroundColor" : "#ffffff",
+            "list" : [
+                {
+                    "pagePath" : "pages/main/message/message",
+                    "iconPath" : "static/template.png",
+                    "selectedIconPath" : "static/templateHL.png",
+                    "text" : "消息"
+                },
+                {
+                    "pagePath" : "pages/main/contacts/contacts",
+                    "iconPath" : "static/template.png",
+                    "selectedIconPath" : "static/templateHL.png",
+                    "text" : "通讯录"
+                },
+                {
+                    "pagePath" : "pages/main/find/find",
+                    "iconPath" : "static/template.png",
+                    "selectedIconPath" : "static/templateHL.png",
+                    "text" : "发现"
+                },
+                {
+                    "pagePath" : "pages/main/me/me",
+                    "iconPath" : "static/template.png",
+                    "selectedIconPath" : "static/templateHL.png",
+                    "text" : "我"
+                }
+            ],
+            "height" : "50px"
+        },
+        "launch_path" : "__uniappview.html"
     },
-    "h5" : {
-        "devServer" : {
-            "port" : 8080
-        }
-    }
+    "appid" : "__UNI__B580BC3",
+    "versionName" : "1.0"
 }
