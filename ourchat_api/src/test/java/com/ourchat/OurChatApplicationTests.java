@@ -1,6 +1,7 @@
 package com.ourchat;
 
 import com.ourchat.common.email.MailServiceImpl;
+import com.ourchat.system.top.service.TopService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,13 +13,12 @@ class OurChatApplicationTests {
     @Autowired
     private MailServiceImpl mailService;
 
+    @Autowired
+    private TopService service;
+
     @Test
     void contextLoads() {
-        try {
-            mailService.sendSimpleMail("2066035486@qq.com","OurChat","这周日你有空吗?   来自：新乡交际花");
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
+        System.out.println(service.searchFriend("交际花"));
 
     }
 }

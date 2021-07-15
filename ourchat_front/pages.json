@@ -130,6 +130,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/main/common/AddFriend",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "添加好友",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/main/common/Search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "搜索",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

@@ -11,15 +11,16 @@ export default{
 			 auth:false,
 			 method:'GET'
 		 },
-		 test:{
-			 url:'/userLogin',
-			 auth:false,
-			 method:'GET'
+		 addFriend:{
+			 url:'/common/addFriend',
+			 auth:true,
+			 method:'POST'
 		 },
-		 uploadImage:{
-			 url:'/upload',
-			 auth:false,
-			 method:'UPLOAD'
+		 searchFriend:{
+			 url:'/common/searchFriend',
+			 auth:true,
+			 method:'POST'
 		 }
+		 
 	 }
 }

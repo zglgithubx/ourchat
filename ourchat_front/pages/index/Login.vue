@@ -35,9 +35,9 @@
 		},
 		data() {
 			return {
-				email:'786945363@qq.com',
-				password:'qwe123',
-				code:'1111',
+				email:'',
+				password:'',
+				code:'',
 			}
 		},
 		methods: {

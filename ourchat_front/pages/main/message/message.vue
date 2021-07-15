@@ -48,6 +48,18 @@
 			this.onmessage();
 		},
 		methods: {
+			onNavigationBarButtonTap(e) {
+				if(e.index===1){
+					uni.navigateTo({
+						url:"/pages/main/common/Search"
+					})
+				}else{
+					uni.navigateTo({
+						url:"/pages/main/common/AddFriend"
+					})
+				}
+				
+			},
 			onmessage(){
 				this.$Socket.eventPatch.onMsg((msg,sk)=>{    //监听是否接受消息
 					var backMessage=msg.data.split(":");

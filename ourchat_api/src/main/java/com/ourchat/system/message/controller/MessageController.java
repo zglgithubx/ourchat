@@ -5,10 +5,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 @RestController
-public class TestController {
-    @ApiOperation("测试请求")
-    @GetMapping("/userLogin")
-    public String test(){
-        return "hello world";
-    }
+public class MessageController {
+
 }
