@@ -1,0 +1,79 @@
+{
+  "id": "2534226",
+  "name": "ourchat",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10086396",
+      "name": "通讯录",
+      "font_class": "tongxunlu1",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "13091795",
+      "name": "我 的",
+      "font_class": "wode",
+      "unicode": "feba",
+      "unicode_decimal": 65210
+    },
+    {
+      "icon_id": "14147837",
+      "name": "搜索 (1)",
+      "font_class": "sousuo1",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "14153374",
+      "name": "添加",
+      "font_class": "-tainjia",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "15391378",
+      "name": "发现",
+      "font_class": "faxian1",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "18027599",
+      "name": "我 的",
+      "font_class": "wode1",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "19716696",
+      "name": "消 息",
+      "font_class": "xiaoxi",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "20589996",
+      "name": "消 息",
+      "font_class": "xiaoxi1",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
+      "icon_id": "1371428",
+      "name": "发现",
+      "font_class": "faxian",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "2743193",
+      "name": "通讯录",
+      "font_class": "tongxunlu",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    }
+  ]
+}

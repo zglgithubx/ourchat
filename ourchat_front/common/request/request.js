@@ -6,7 +6,7 @@ export default class Request {
 		baseUrl: store.state.serverUrl,
 		header: {
 			'content-type': 'application/x-www-form-urlencoded',
-			 "Content-Security-Policy": "upgrade-insecure-requests"
+			"Content-Security-Policy": "upgrade-insecure-requests"
 		},
 		loadingText: '请求中...',
 		loadingTime: 1000, // 在此时间内，请求还没回来的话，就显示加载中动画，单位ms
@@ -69,6 +69,7 @@ export default class Request {
 	}
 
 	requestComFun(response) {
+		console.log("响应拦截器:",response)
 		return response
 	}
 
@@ -218,7 +219,7 @@ export default class Request {
 		files,
 		// #endif
 		// #ifdef MP-ALIPAY
-		fileType,
+		//fileType,
 		// #endif
 		filePath,
 		name,
@@ -239,10 +240,10 @@ export default class Request {
 				files,
 				// #endif
 				// #ifdef MP-ALIPAY
-				fileType,
+				//fileType,
 				// #endif
 				filePath,
-				method: 'UPLOAD',
+				method: 'post',
 				name,
 				header: header || globalHeader,
 				formData,

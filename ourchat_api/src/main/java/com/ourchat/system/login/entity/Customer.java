@@ -9,25 +9,113 @@ import java.util.Collection;
 
 @ApiModel("用户实体类")
 public class Customer implements UserDetails {
-    @ApiModelProperty("手机号")
-    private String phoneNumber;
+    @ApiModelProperty("邮箱")
+    private String email;
     @ApiModelProperty("密码")
     private String password;
+    @ApiModelProperty("昵称")
+    private String name;
+    @ApiModelProperty("性别")
+    private Boolean gender;
+    @ApiModelProperty("年龄")
+    private Byte age;
+    @ApiModelProperty("地址")
+    private String address;
+    @ApiModelProperty("个性签名")
+    private String signature;
+    @ApiModelProperty("头像路径")
+    private String iconPath;
+    @ApiModelProperty("背景路径")
+    private String backgroundImagePath;
+    @ApiModelProperty("是否漫游")
+    private Boolean isRoaming;
 
     @Override
     public String toString() {
-        return "User{" +
-                "phoneNumber='" + phoneNumber + '\'' +
+        return "Customer{" +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", age=" + age +
+                ", address='" + address + '\'' +
+                ", signature='" + signature + '\'' +
+                ", iconPath='" + iconPath + '\'' +
+                ", backgroundImagePath='" + backgroundImagePath + '\'' +
+                ", isRoaming=" + isRoaming +
                 '}';
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getName() {
+        return name;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(Boolean gender) {
+        this.gender = gender;
+    }
+
+    public Byte getAge() {
+        return age;
+    }
+
+    public void setAge(Byte age) {
+        this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public String getIconPath() {
+        return iconPath;
+    }
+
+    public void setIconPath(String iconPath) {
+        this.iconPath = iconPath;
+    }
+
+    public String getBackgroundImagePath() {
+        return backgroundImagePath;
+    }
+
+    public void setBackgroundImagePath(String backgroundImagePath) {
+        this.backgroundImagePath = backgroundImagePath;
+    }
+
+    public Boolean getRoaming() {
+        return isRoaming;
+    }
+
+    public void setRoaming(Boolean roaming) {
+        isRoaming = roaming;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPassword(String password) {
@@ -46,7 +134,7 @@ public class Customer implements UserDetails {
 
     @Override
     public String getUsername() {
-        return phoneNumber;
+        return email;
     }
     //账户是否过期
     @Override

@@ -2,7 +2,7 @@
 export default{
 	 user:{
 		 login:{
-			 url:'/authentication/mobile',
+			 url:'/authentication/email',
 			 auth:false,
 			 method:'POST'
 		 },
@@ -11,10 +11,16 @@ export default{
 			 auth:false,
 			 method:'GET'
 		 },
-		 test:{
-			 url:'/userLogin',
-			 auth:false,
-			 method:'GET'
+		 addFriend:{
+			 url:'/common/addFriend',
+			 auth:true,
+			 method:'POST'
+		 },
+		 searchFriend:{
+			 url:'/common/searchFriend',
+			 auth:true,
+			 method:'POST'
 		 }
+		 
 	 }
 }

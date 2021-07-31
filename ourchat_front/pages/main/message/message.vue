@@ -1,12 +1,6 @@
 <template>
 	
 	<view>
-		<!-- <view>
-		  <view class="status_bar">
-			  这里是状态栏
-		  </view>
-		  <view> 状态栏下的文字 </view>
-		</view> -->
 		<div>
 			<view class="uni-padding-wrap uni-common-mt" style="padding:20px">
 				<view class="uni-form-item uni-column">
@@ -33,7 +27,6 @@
 				</view>
 			</view>
 		</div>
-		
 	</view>
 </template>
 
@@ -48,13 +41,25 @@
 			}
 		},
 		onLoad(obj){
-			this.$data.myId=obj.mobile;
+			this.$data.myId=obj.email;
 			this.$Socket.nsend(this.$data.myId);
 		},
 		onShow(){
 			this.onmessage();
 		},
 		methods: {
+			onNavigationBarButtonTap(e) {
+				if(e.index===1){
+					uni.navigateTo({
+						url:"/pages/main/common/Search"
+					})
+				}else{
+					uni.navigateTo({
+						url:"/pages/main/common/AddFriend"
+					})
+				}
+				
+			},
 			onmessage(){
 				this.$Socket.eventPatch.onMsg((msg,sk)=>{    //监听是否接受消息
 					var backMessage=msg.data.split(":");
@@ -69,7 +74,14 @@
 				
 			},
 			test(){
-				this.$api("user.test");
+				this.$api("user.test").then(res=>{
+					if(res.errorMsg!=undefined){
+						uni.reLaunch({
+							url:"/pages/index/Login"
+						})
+						this.$Socket.nclose();
+					}
+				});
 			}
 		}
 	}

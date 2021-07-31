@@ -1,23 +1,24 @@
 package com.ourchat;
 
-import com.ourchat.system.login.mapper.UserMapper;
-import com.ourchat.system.login.entity.Customer;
+import com.ourchat.common.email.MailServiceImpl;
+import com.ourchat.system.top.service.TopService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 class OurChatApplicationTests {
     @Autowired
-    private UserMapper userMapper;
+    private MailServiceImpl mailService;
+
+    @Autowired
+    private TopService service;
+
     @Test
     void contextLoads() {
-        Customer customer = userMapper.getUserByPhoneNumber("1");
-        System.out.println(customer.toString());
+        System.out.println(service.searchFriend("交际花"));
 
     }
-
-
-
-
 }
