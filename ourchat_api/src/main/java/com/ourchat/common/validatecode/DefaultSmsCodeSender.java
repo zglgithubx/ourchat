@@ -1,5 +1,7 @@
 package com.ourchat.common.validatecode;
 
+import com.ourchat.common.email.MailServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,7 +9,16 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DefaultSmsCodeSender {
+    @Autowired
+    private MailServiceImpl mailService;
     public void send(String email, String code) {
-        System.out.println("邮箱地址为："+email+",发送短信验证码"+code);
+//        String content="【OurChat】验证码：【"+code+"】（登录验证码，请完成验证），一分钟内有效，如非本人操作，请忽略本消息。";
+//        try {
+//            mailService.sendSimpleMail(email,"【OurChat】",content);
+//        }catch (Exception ex){
+//            ex.printStackTrace();
+//            System.out.println("发送验证码失败");
+//        }
+        System.out.println("发送验证成功，邮箱地址为："+email+",发送短信验证码"+code);
     }
 }

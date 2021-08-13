@@ -13,6 +13,7 @@
 </template>
 
 <script>
+	import store from '@/store/index'
 	import {openSqlite,
 	userInfoSQL,
 	addUserInformation,
@@ -34,8 +35,7 @@
 				})
 			},
 			test(){
-				openSqlite();
-				// userInfoSQL("2");
+				alert(store.state.websocketUrl)
 			}
 		}
 	}

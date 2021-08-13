@@ -20,8 +20,8 @@ public class LoginController {
     private DefaultSmsCodeSender defaultSmsCodeSender;
     @ApiOperation("发送验证码")
     @GetMapping("/code/sms")
-    public void createSmsCode(HttpServletRequest request, HttpSession session, @RequestParam String email){
-        ValidateCode smsCode=smsCodeGenerator.generate(new ServletWebRequest(request),email);
+    public void createSmsCode(HttpSession session, @RequestParam String email){
+        ValidateCode smsCode=smsCodeGenerator.generate();
         session.setAttribute(email,smsCode);
         defaultSmsCodeSender.send(email,smsCode.getCode());
     }

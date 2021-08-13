@@ -22,8 +22,7 @@ public class OfflineManagement {
 
     private static final RedisTemplate redisTemplate=(RedisTemplate) GetBean.getBean("redisTemplate");
     private static final ValueOperations valueOperations=redisTemplate.opsForValue();
-    @Autowired
-    CustomerMapper userMapper;
+    @Autowired CustomerMapper userMapper;
     /**
      * 新增消息
      */

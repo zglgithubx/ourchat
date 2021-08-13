@@ -196,6 +196,7 @@
 		methods: {
 			submit(url) {
 				var that=this;
+				console.log(this.$refs.photo,"文件参数")
 				this.$refs.uForm.validate(valid => {
 					if (valid) {
 						const uploadTask=uni.uploadFile({

@@ -134,7 +134,7 @@
             "path" : "pages/main/common/AddFriend",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "添加好友",
+                "navigationBarTitleText": "添加朋友",
                 "enablePullDownRefresh": false
             }
             
@@ -144,6 +144,15 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "搜索",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/main/common/FriendInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             

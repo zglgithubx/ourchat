@@ -1,15 +1,16 @@
 spring:
+  netty: 8086
   datasource:
     username: root
-    password: 54188
-    url: jdbc:mysql://localhost:3306/chat?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    password: 123456
+    url: jdbc:mysql://47.94.156.204:3306/chat?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: ourchat
     # redis配置
   redis:
     database: 0
-    host: 127.0.0.1
+    host: 47.94.156.204
     port: 6379
     password:
     jedis:
@@ -37,13 +38,15 @@ spring:
     host: smtp.qq.com
     port: 587
     username: 786945363@qq.com
-    password: ecegwozfzwngbcbh
+    password: ****************
     properties.mail.smtp.auth: true
     properties.mail.smtp.starttls.enable: true
     properties.mail.smtp.starttls.required: true
     default-encoding: UTF-8
   profiles:
     active: dev
+  mvc:
+    static-path-pattern: /static/**
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
@@ -53,3 +56,5 @@ swagger:
   application-version: 1.0
   application-description: ourchat的接口文档
   try-host: http://localhost:${server.port}
+
+

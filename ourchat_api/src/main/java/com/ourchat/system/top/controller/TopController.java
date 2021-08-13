@@ -1,12 +1,16 @@
 package com.ourchat.system.top.controller;
 
+import com.ourchat.common.response.Result;
 import com.ourchat.system.login.entity.Customer;
 import com.ourchat.system.top.service.TopService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/common")
@@ -16,9 +20,15 @@ public class TopController {
 
     @ApiOperation("搜索好友")
     @PostMapping("/searchFriend")
-    public String searchFriend(String criteria){
-        Customer customer= topService.searchFriend(criteria);
-        return "成功进入";
+    public Result<Object> searchFriend(@RequestParam("email") String criteria){
+        if (( criteria != null) && (!criteria.isEmpty())) {
+            if(Pattern.matches("^(\\w+([-.][A-Za-z0-9]+)*){3,18}@\\w+([-.][A-Za-z0-9]+)*\\.\\w+([-.][A-Za-z0-9]+)*$",criteria)){
+                return Result.success(topService.searchFriend(criteria));
+            }else{
+                return Result.success(topService.searchFriendName(criteria));
+            }
+        }
+        return Result.error("搜索内容不合法");
     }
     @ApiOperation("添加好友")
     @PostMapping("/addFriend")

@@ -41,6 +41,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
             filterChain.doFilter(httpServletRequest,httpServletResponse);
         }else{
             if(!StringUtils.equals("/code/sms",httpServletRequest.getRequestURI())){
+                System.out.println(httpServletRequest.getRequestURI());
                 //其他请求验证token
                 if(StringUtils.equals("/sign-up",httpServletRequest.getRequestURI())){
                     filterChain.doFilter(httpServletRequest,httpServletResponse);
@@ -50,31 +51,32 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
                     filterChain.doFilter(httpServletRequest,httpServletResponse);
                     return;
                 }
-                String token=httpServletRequest.getHeader("token");
-                if(StringUtils.isNotBlank(token)){
-                    //token验证结果
-                    int verify= jwtUtil.verify(token);
-                    if(verify!=1){
-                        //验证失败
-                        if(verify==2){
-                            map.put("errorMsg","token已过期");
-                        }else{
-                            map.put("errorMsg","用户信息验证失败");
-                        }
-                    }else{
-                        filterChain.doFilter(httpServletRequest,httpServletResponse);
-                        return;
-                    }
-                }else{
-                    map.put("errorMsg","未携带token信息");
-                }
-                JSONObject jsonObject=new JSONObject(map);
-                httpServletResponse.setContentType("application/json");
-                httpServletResponse.setCharacterEncoding("utf-8");
-                PrintWriter printWriter=httpServletResponse.getWriter();
-                printWriter.write(jsonObject.toString());
-                printWriter.flush();
-                printWriter.close();
+                filterChain.doFilter(httpServletRequest,httpServletResponse);
+//                String token=httpServletRequest.getHeader("token");
+//                if(StringUtils.isNotBlank(token)){
+//                    //token验证结果
+//                    int verify= jwtUtil.verify(token);
+//                    if(verify!=1){
+//                        //验证失败
+//                        if(verify==2){
+//                            map.put("errorMsg","token已过期");
+//                        }else{
+//                            map.put("errorMsg","用户信息验证失败");
+//                        }
+//                    }else{
+//                        filterChain.doFilter(httpServletRequest,httpServletResponse);
+//                        return;
+//                    }
+//                }else{
+//                    map.put("errorMsg","未携带token信息");
+//                }
+//                JSONObject jsonObject=new JSONObject(map);
+//                httpServletResponse.setContentType("application/json");
+//                httpServletResponse.setCharacterEncoding("utf-8");
+//                PrintWriter printWriter=httpServletResponse.getWriter();
+//                printWriter.write(jsonObject.toString());
+//                printWriter.flush();
+//                printWriter.close();
             }else{
                 filterChain.doFilter(httpServletRequest,httpServletResponse);
             }

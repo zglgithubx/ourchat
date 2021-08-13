@@ -35,9 +35,9 @@
 		},
 		data() {
 			return {
-				email:'',
-				password:'',
-				code:'',
+				email:'786945363@qq.com',
+				password:'qwe123',
+				code:'54188',
 			}
 		},
 		methods: {
@@ -45,7 +45,7 @@
 				var that=this;
 				this.$api("user.sendCode",{email:that.email}).then(res=>{
 					console.log("发送验证码成功");
-				})
+				});
 			},
 			login(ur){
 				var that=this;
@@ -63,6 +63,7 @@
 			}
 		}
 	}
+	
 </script>
 
 <style>
