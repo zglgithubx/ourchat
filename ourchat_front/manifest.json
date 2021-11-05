@@ -126,5 +126,10 @@
         "launch_path" : "__uniappview.html"
     },
     "appid" : "__UNI__B580BC3",
-    "versionName" : "1.0"
+    "versionName" : "1.0",
+    "h5" : {
+        "devServer" : {
+            "https" : false
+        }
+    }
 }

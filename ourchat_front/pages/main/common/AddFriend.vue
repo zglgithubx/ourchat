@@ -15,7 +15,9 @@
 					keyword: '',
 					action:{
 						color:"white",
-					}
+					},
+					objectList:[]
+					
 				}
 			},
 			methods:{

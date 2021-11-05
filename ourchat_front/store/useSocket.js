@@ -8,9 +8,13 @@ export function connectWebSocket(){
 	    // onOpen(res) {
 	    //     console.log('连接成功')
 	    // },
-	    // onClose(err) {
-	    //     console.log('关闭了连接')
-	    // },
+	    onClose(err) {
+			uni.reLaunch({
+				url:"/pages/index/Login"
+			})
+			
+	        console.log('关闭了连接，请重新登录')
+	    },
 	    // onReload(res) {
 	    //     console.log('重载：' + res)
 	    // },

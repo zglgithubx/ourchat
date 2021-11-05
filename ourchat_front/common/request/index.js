@@ -12,9 +12,7 @@ export default function api(url, data = {}) {
 				store.commit('LOGIN_TIP', true)
 				// store.commit('OUT_LOGIN');
 			}
-		}
-		if (uni.getStorageSync('token')) {
-			config.header.token = uni.getStorageSync('token');
+			config.header.token=token;
 		}
 		// if(store.state.envVersion!='release'){
 		console.log('客户端发送:',config.url, config.data,new Date().valueOf())
@@ -52,10 +50,6 @@ export default function api(url, data = {}) {
 		}else if(response.data.token!=undefined){
 			uni.setStorageSync("token",response.data.token)
 		}
-		
-		// if (response.config.custom.verification) { // 演示自定义参数的作用
-		//   return response.data
-		// }
 		return response
 	}, (response) => { // 预留可以日志上报
 		return response

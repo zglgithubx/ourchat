@@ -200,7 +200,7 @@
 				this.$refs.uForm.validate(valid => {
 					if (valid) {
 						const uploadTask=uni.uploadFile({
-							url:'http://localhost:8087/sign-up',
+							url:'http://localhost:8088/sign-up',
 							filePath:this.$refs.photo.imageSrc,
 							name:'file',
 							header:{
