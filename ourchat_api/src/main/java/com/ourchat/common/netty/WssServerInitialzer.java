@@ -8,8 +8,17 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 
 public class WssServerInitialzer extends ChannelInitializer<SocketChannel> {
+    private final String path;
+
+    public WssServerInitialzer(String path){
+        this.path=path;
+    }
+
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
@@ -25,7 +34,7 @@ public class WssServerInitialzer extends ChannelInitializer<SocketChannel> {
 
         //websocket 服务器处理的协议，用于给指定的客户端进行连接访问的路由地址
         //比如处理一些握手动作(ping,pong)
-        pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
+        pipeline.addLast(new WebSocketServerProtocolHandler(path));
 
         //自定义handler
         pipeline.addLast(new ChatHandler());

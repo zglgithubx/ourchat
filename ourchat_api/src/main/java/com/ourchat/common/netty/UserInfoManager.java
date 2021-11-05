@@ -14,7 +14,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class UserInfoManager {
     private static ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock(true);
-//    private static ConcurrentMap<Channel, UserInfo> userInfos = new ConcurrentHashMap<>();
     private static ConcurrentMap<String, UserInfo> userInfos = new ConcurrentHashMap<>();
     /**
      * 登录注册 channel

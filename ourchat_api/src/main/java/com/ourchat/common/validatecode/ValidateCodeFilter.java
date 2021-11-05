@@ -4,7 +4,10 @@ import com.ourchat.common.redis.GetBean;
 import com.ourchat.common.utils.JwtUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 import org.springframework.web.filter.OncePerRequestFilter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -47,36 +50,32 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
                     filterChain.doFilter(httpServletRequest,httpServletResponse);
                     return;
                 }
-                if(StringUtils.equals("/src/main/",httpServletRequest.getRequestURI())){
-                    filterChain.doFilter(httpServletRequest,httpServletResponse);
-                    return;
+                String token=httpServletRequest.getHeader("token");
+                if(StringUtils.isNotBlank(token)){
+                    //token验证结果
+                    int verify= jwtUtil.verify(token);
+                    if(verify!=1){
+                        //验证失败
+                        if(verify==2){
+                            map.put("errorMsg","token已过期");
+                        }else{
+                            map.put("errorMsg","用户信息验证失败");
+                        }
+                    }else{
+                        filterChain.doFilter(httpServletRequest,httpServletResponse);
+                        return;
+                    }
+                }else{
+                    map.put("errorMsg","未携带token信息");
                 }
-                filterChain.doFilter(httpServletRequest,httpServletResponse);
-//                String token=httpServletRequest.getHeader("token");
-//                if(StringUtils.isNotBlank(token)){
-//                    //token验证结果
-//                    int verify= jwtUtil.verify(token);
-//                    if(verify!=1){
-//                        //验证失败
-//                        if(verify==2){
-//                            map.put("errorMsg","token已过期");
-//                        }else{
-//                            map.put("errorMsg","用户信息验证失败");
-//                        }
-//                    }else{
-//                        filterChain.doFilter(httpServletRequest,httpServletResponse);
-//                        return;
-//                    }
-//                }else{
-//                    map.put("errorMsg","未携带token信息");
-//                }
-//                JSONObject jsonObject=new JSONObject(map);
-//                httpServletResponse.setContentType("application/json");
-//                httpServletResponse.setCharacterEncoding("utf-8");
-//                PrintWriter printWriter=httpServletResponse.getWriter();
-//                printWriter.write(jsonObject.toString());
-//                printWriter.flush();
-//                printWriter.close();
+                JSONObject jsonObject=new JSONObject(map);
+                httpServletResponse.setStatus(403);
+                httpServletResponse.setContentType("application/json");
+                httpServletResponse.setCharacterEncoding("utf-8");
+                PrintWriter printWriter=httpServletResponse.getWriter();
+                printWriter.write(jsonObject.toString());
+                printWriter.flush();
+                printWriter.close();
             }else{
                 filterChain.doFilter(httpServletRequest,httpServletResponse);
             }
@@ -96,7 +95,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
         }
 
         if(codeInSession == null){
-            throw new ValidateCodeException("该手机号未发送验证码");
+            throw new ValidateCodeException("该邮箱未发送验证码");
         }
 
         if(codeInSession.isExpried()){

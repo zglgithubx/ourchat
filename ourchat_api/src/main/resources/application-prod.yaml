@@ -25,11 +25,16 @@ spring:
         min-idle: 2
     timeout: 6000
   mail:
-    host: smtp.qq.com
-    port: 587
-    username: 786945363@qq.com
+    # 本地测试需要开启代理
+    host: smtp.gmail.com
+    username: zgl4131025@gmail.com
     password:
+    protocol: smtp
     properties.mail.smtp.auth: true
+    properties.mail.smtp.port: 465
+    properties.mail.display.sendmail: Javen
+    properties.mail.display.sendname: Spring Boot Guide Email
     properties.mail.smtp.starttls.enable: true
     properties.mail.smtp.starttls.required: true
-    default-encoding: UTF-8
+    properties.mail.smtp.ssl.enable: true
+    default-encoding: utf-8

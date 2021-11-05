@@ -17,3 +17,6 @@ public class SmsCodeGenerator {
         return new ValidateCode(code, 60);
     }
 }
+
+
+

@@ -29,14 +29,14 @@ public class SignUpController {
             return "文件为空";
         }
         String fileName= file.getOriginalFilename();
-        File dest=new File(new File("src/main/resources/customer/icon").getAbsolutePath()+"/"+fileName);
+        File dest=new File(new File("src/main/resources/static/customer/icon").getAbsolutePath()+"/"+fileName);
         if (!dest.getParentFile().exists()) {
             dest.getParentFile().mkdirs();
         }
         try {
             file.transferTo(dest); // 保存文件
-            if(signUpService.create(customerDTO,dest.getAbsolutePath())){
-                return dest.getAbsolutePath();
+            if(signUpService.create(customerDTO,fileName)){
+                return fileName;
             }
             return "保存文件成功，注册失败";
         } catch (Exception e) {
@@ -44,5 +44,6 @@ public class SignUpController {
             return "保存失败";
         }
     }
-
 }
+
+

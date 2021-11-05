@@ -14,13 +14,8 @@ public class MailServiceImpl implements MailService{
     @Value("${spring.mail.username}")
     private String from;
 
-    @Value("${spring.netty}")
-    private String port;
-
     @Override
     public void sendSimpleMail(String to, String subject, String content) {
-        System.out.println("from:"+from);
-        System.out.println("port"+port);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
         message.setTo(to);

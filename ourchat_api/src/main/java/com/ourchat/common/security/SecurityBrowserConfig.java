@@ -50,7 +50,6 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/#/pages/index/Login").permitAll()
                 .antMatchers("/code/*").permitAll()
                 .antMatchers("/sign-up").permitAll()
-                .antMatchers("/src/main/*").permitAll()
                 .antMatchers("/static/**").permitAll()
                 .anyRequest()
                 .authenticated()

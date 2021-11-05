@@ -28,7 +28,7 @@ public class Producer {
 
         String routingKey="hola";
         //发布消息
-        byte[] messageBodyBytes="quit".getBytes();
+        byte[] messageBodyBytes="你好，交际花".getBytes();
         channel.basicPublish(exchangeName,routingKey,null,messageBodyBytes);
         channel.close();
         connection.close();
