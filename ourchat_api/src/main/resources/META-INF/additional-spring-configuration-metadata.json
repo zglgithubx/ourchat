@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "netty.port",
+      "type": "java.lang.String",
+      "description": "netty服务访问的端口"
+    },
+    {
+      "name": "netty.path",
+      "type": "java.lang.String",
+      "description": "netty服务访问的路径"
+    }
+  ] }

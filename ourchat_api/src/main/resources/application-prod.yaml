@@ -1,22 +1,22 @@
 server:
-  port: 8088
+  port: 8000
 netty:
-  port: 8087
-  path: /ws
+  port: 8001
+  path: /websockt
 spring:
   datasource:
     username: root
-    password: 54188
-    url: jdbc:mysql://127.0.0.1:3306/chat?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    password: tomxun@2021
+    url: jdbc:mysql://172.17.0.2:3306/chat?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: ourchat
     # redis配置
   redis:
     database: 0
-    host: 127.0.0.1
+    host: 172.17.0.3
     port: 6379
-    password:
+    password: tomxun@redis
     jedis:
       pool:
         max-active: 8
@@ -38,3 +38,8 @@ spring:
     properties.mail.smtp.starttls.required: true
     properties.mail.smtp.ssl.enable: true
     default-encoding: utf-8
+  rabbitmq:
+    host: 172.17.0.5
+    port: 5672
+    username: admin
+    password: admin

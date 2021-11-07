@@ -34,12 +34,13 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web){
         //所需要用到的静态资源，允许访问
-        web.ignoring().antMatchers( "/swagger-ui.html",
+        web.ignoring().antMatchers(
+    "/swagger-ui.html",
                 "/swagger-ui/*",
                 "/swagger-resources/**",
                 "/v2/api-docs",
                 "/v3/api-docs",
-                "/webjars/**");
+                "/webjars/**","/favicon.ico");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -49,6 +50,7 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/#/pages/index/Login").permitAll()
                 .antMatchers("/code/*").permitAll()
+                .antMatchers("/test/**").permitAll()
                 .antMatchers("/sign-up").permitAll()
                 .antMatchers("/static/**").permitAll()
                 .anyRequest()
