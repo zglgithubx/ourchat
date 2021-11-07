@@ -8,6 +8,7 @@ JAR_PATH=./target/demo-0.0.1-RELEASE.jar
 
 profile=$2
 port=$3
+nettyPort=$4
 #Xms=$4
 #Xmx=$5
 
@@ -49,7 +50,7 @@ start(){
     echo "${SERVER_NAME} is already running. pid=${pid} ."
   else
     echo --------Starting application --------
-    nohup java -server -Xms512m -Xmx512m -XX:SurvivorRatio=4 -Xss256k -XX:PermSize=256m -XX:MaxPermSize=512m -XX:-DisableExplicitGC -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -jar $JAR_PATH --spring.profiles.active=${profile:-prod} --server.port=${port:-8000} > start.log 2>&1 &
+    nohup java -server -Xms512m -Xmx512m -XX:SurvivorRatio=4 -Xss256k -XX:PermSize=256m -XX:MaxPermSize=512m -XX:-DisableExplicitGC -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -jar $JAR_PATH --spring.profiles.active=${profile:-prod} --server.port=${port:-8000} --netty.port=${nettyPort:-8001}> start.log 2>&1 &
 
   fi
 }

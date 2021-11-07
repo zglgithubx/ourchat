@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: prod
+    active: dev
   mvc:
     static-path-pattern: /static/**
 mybatis:
@@ -12,6 +12,8 @@ swagger:
   application-version: 1.0
   application-description: ourchat的接口文档
   try-host: http://localhost:${server.port}
+netty:
+  path: /websocket
 
 
 
