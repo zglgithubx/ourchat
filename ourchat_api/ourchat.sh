@@ -17,9 +17,6 @@ usage() {
     exit 1
 }
 build(){
-  if [ $? -ne 0 ]; then
-    exit
-  fi
   echo "----------mvn clean package -Dmaven.test.skip=true---------"
   mvn clean package -Dmaven.test.skip=true
   if [ $? -ne 0 ]; then
@@ -52,7 +49,7 @@ start(){
     echo "${SERVER_NAME} is already running. pid=${pid} ."
   else
     echo --------Starting application --------
-    nohup java -server -Xms512m -Xmx512m -XX:SurvivorRatio=4 -Xss256k -XX:PermSize=256m -XX:MaxPermSize=512m -XX:-DisableExplicitGC -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -jar $JAR_PATH --spring.profiles.active=${profile:-dev} --server.port=${port:-8087} > start.log 2>&1 &
+    nohup java -server -Xms512m -Xmx512m -XX:SurvivorRatio=4 -Xss256k -XX:PermSize=256m -XX:MaxPermSize=512m -XX:-DisableExplicitGC -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -jar $JAR_PATH --spring.profiles.active=${profile:-prod} --server.port=${port:-8000} > start.log 2>&1 &
 
   fi
 }
