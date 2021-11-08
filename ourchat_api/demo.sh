@@ -10,7 +10,7 @@ SERVER_NAME=ourchat
 JAR_PATH=./target/demo-0.0.1-RELEASE.jar
 
 #项目根目录文件夹名称（*必填）
-Root_File_Name=ourchat_api
+Root_File_Name=ourchat
 
 profile=$2
 port=$3
