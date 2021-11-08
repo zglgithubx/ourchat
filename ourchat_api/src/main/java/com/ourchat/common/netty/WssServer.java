@@ -36,6 +36,6 @@ public class WssServer {
     }
     public void start(int port) {
         ChannelFuture future = this.server.bind(port);
-        log.info("Netty started on port(s): "+port+" (ws) with context path "+path);
+        log.info("Netty started on port(s): "+port+" (ws) with context path '"+path+"'");
     }
 }
