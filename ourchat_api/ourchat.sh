@@ -51,7 +51,7 @@ start(){
   else
     echo --------Starting application --------
     nohup java -server -Xms512m -Xmx512m -XX:SurvivorRatio=4 -Xss256k -XX:PermSize=256m -XX:MaxPermSize=512m -XX:-DisableExplicitGC -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -jar $JAR_PATH --spring.profiles.active=${profile:-prod} --server.port=${port:-8000} --netty.port=${nettyPort:-8001}> start.log 2>&1 &
-
+    echo --------------Started!---------------
   fi
 }
 
