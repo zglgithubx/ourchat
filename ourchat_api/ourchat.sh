@@ -14,7 +14,7 @@ nettyPort=$4
 
 #使用说明，用来提示输入参数
 usage() {
-    echo "Usage: sh 执行脚本.sh [build|start|stop|restart|status|pull] [profile] [port]"
+    echo "Usage: sh 执行脚本.sh [build|start|stop|restart|status|pull] [profile] [port] [nettyPort]"
     exit 1
 }
 build(){
