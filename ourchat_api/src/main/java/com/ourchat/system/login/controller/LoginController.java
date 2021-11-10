@@ -11,7 +11,7 @@ import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-@Api(tags = "登录API")
+@Api(tags = "登录验证模块")
 @RestController
 public class LoginController {
     @Autowired
@@ -19,14 +19,14 @@ public class LoginController {
     @Autowired
     private DefaultSmsCodeSender defaultSmsCodeSender;
     @ApiOperation("发送验证码")
-    @GetMapping("/code/sms")
+    @GetMapping("/auth/sms")
     public void createSmsCode(HttpSession session, @RequestParam String email){
         ValidateCode smsCode=smsCodeGenerator.generate();
         session.setAttribute(email,smsCode);
         defaultSmsCodeSender.send(email,smsCode.getCode());
     }
     @ApiOperation("登录验证")
-    @PostMapping("/authentication/mobile")
+    @PostMapping("/auth/email")
     public void validateSmsCode(@RequestParam String email,@RequestParam String password, @RequestParam String smsCode){
     }
 }

@@ -33,6 +33,8 @@
 
 <script>
 	import uploadImage from '../../components/uploadImage.vue'
+	import api from '@/common/request/api'
+	import store from '@/store/index'
 	export default {
 		components:{uploadImage},
 		data() {
@@ -200,7 +202,7 @@
 				this.$refs.uForm.validate(valid => {
 					if (valid) {
 						const uploadTask=uni.uploadFile({
-							url:'http://localhost:8088/sign-up',
+							url:store.state.serverUrl+api.user.signUp.url,
 							filePath:this.$refs.photo.imageSrc,
 							name:'file',
 							header:{

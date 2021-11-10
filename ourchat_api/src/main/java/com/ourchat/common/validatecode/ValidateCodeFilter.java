@@ -33,7 +33,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain)
             throws ServletException, IOException {
 
-        if(StringUtils.equals("/authentication/email", httpServletRequest.getRequestURI())){
+        if(StringUtils.equals("/auth/email", httpServletRequest.getRequestURI())){
             try {
                 validateSmsCode(httpServletRequest,httpServletRequest.getSession());
             }catch (ValidateCodeException e) {
@@ -43,15 +43,15 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
             //验证码验证成功，放行
             filterChain.doFilter(httpServletRequest,httpServletResponse);
         }
-        if(StringUtils.equals("/code/sms",httpServletRequest.getRequestURI())){
+        if(StringUtils.equals("/auth/sms",httpServletRequest.getRequestURI())){
             filterChain.doFilter(httpServletRequest,httpServletResponse);
             return;
         }
-        if(StringUtils.equals("/sign-up",httpServletRequest.getRequestURI())){
+        if(StringUtils.equals("/auth/sign-up",httpServletRequest.getRequestURI())){
             filterChain.doFilter(httpServletRequest,httpServletResponse);
             return;
         }
-        if(httpServletRequest.getRequestURI().contains("/test/")){
+        if(httpServletRequest.getRequestURI().contains("/api/test/")){
             filterChain.doFilter(httpServletRequest,httpServletResponse);
             return;
         }

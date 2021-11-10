@@ -15,7 +15,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
     private String mobileParameter=SPRING_SECURITY_FROM_MOBILE;
     private boolean postOnly=true;
     public SmsCodeAuthenticationFilter(){
-        super(new AntPathRequestMatcher("/authentication/email"));
+        super(new AntPathRequestMatcher("/auth/email"));
     }
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {

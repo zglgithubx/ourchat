@@ -16,14 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 
-@Api(tags = "登录API")
+@Api(tags = "注册模块")
 @RestController
 public class SignUpController {
     @Autowired
     private SignUpService signUpService;
 
     @ApiOperation("注册账号")
-    @PostMapping("/sign-up")
+    @PostMapping("/auth/sign-up")
     public String upLoad(@RequestParam("file")MultipartFile file, CustomerDTO customerDTO){
         if(file.isEmpty()){
             return "文件为空";

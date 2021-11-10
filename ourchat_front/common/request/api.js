@@ -2,22 +2,25 @@
 export default{
 	 user:{
 		 login:{
-			 url:'/authentication/email',
+			 url:'/auth/email',
 			 auth:false,
 			 method:'POST'
 		 },
 		 sendCode:{
-			 url:'/code/sms',
+			 url:'/auth/sms',
 			 auth:false,
 			 method:'GET'
 		 },
+		 signUp:{
+		 	url:'/auth/sign-up'
+		 }
 		 addFriend:{
-			 url:'/common/addFriend',
+			 url:'/api/common/addFriend',
 			 auth:true,
 			 method:'POST'
 		 },
 		 searchFriend:{
-			 url:'/common/searchFriend',
+			 url:'/api/common/searchFriend',
 			 auth:true,
 			 method:'POST'
 		 }

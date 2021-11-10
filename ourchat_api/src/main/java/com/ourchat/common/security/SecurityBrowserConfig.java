@@ -49,9 +49,9 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/#/pages/index/Login").permitAll()
-                .antMatchers("/code/*").permitAll()
-                .antMatchers("/test/**").permitAll()
-                .antMatchers("/sign-up").permitAll()
+                .antMatchers("/auth/code/*").permitAll()
+                .antMatchers("/api/test/**").permitAll()
+                .antMatchers("/auth/sign-up").permitAll()
                 .antMatchers("/static/**").permitAll()
                 .anyRequest()
                 .authenticated()
@@ -59,7 +59,7 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
                 //在UsernamePasswordAuthenticationFilter之前加上验证码过滤器
                 .formLogin()
                 .loginPage("/#/pages/index/Login")
-                .loginProcessingUrl("/authentication/email")
+                .loginProcessingUrl("/auth/email")
                 .and()
                 .csrf().disable()
                 //把SmsCodeAuthenticationSecurityConfig配置加进来

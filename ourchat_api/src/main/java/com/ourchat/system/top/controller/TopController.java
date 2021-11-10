@@ -3,6 +3,7 @@ package com.ourchat.system.top.controller;
 import com.ourchat.common.response.Result;
 import com.ourchat.system.login.entity.Customer;
 import com.ourchat.system.top.service.TopService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.regex.Pattern;
-
+@Api(tags = "公共模块")
 @RestController
-@RequestMapping("/common")
+@RequestMapping("/api/common")
 public class TopController {
     @Autowired
     private TopService topService;

@@ -3,8 +3,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store =new Vuex.Store({
 	state:{
-		serverUrl:'http://127.0.0.1:8088',
-		websocketUrl:'ws://127.0.0.1:8087/ws',
+		serverUrl:'http://117.50.162.61',
+		websocketUrl:'ws://117.50.162.61/websocket',
 		systemInfo:null,
 		authorizeState:true,
 		config:null,
