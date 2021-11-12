@@ -48,8 +48,7 @@ public class SecurityBrowserConfig extends WebSecurityConfigurerAdapter {
         validateCodeFilter.setAuthenticationFailureHandler(myAuthenticationFailureHandler);
         http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/#/pages/index/Login").permitAll()
-                .antMatchers("/auth/code/*").permitAll()
+                .antMatchers("/auth/sms").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .antMatchers("/auth/sign-up").permitAll()
                 .antMatchers("/static/**").permitAll()

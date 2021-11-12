@@ -2,6 +2,7 @@ package com.ourchat.common.validatecode;
 
 import com.ourchat.common.redis.GetBean;
 import com.ourchat.common.utils.JwtUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ import java.util.Map;
 /**
  * 手机验证码过滤器，拦截的请求为/xx/xx(登录接口)请求方式为POST请求，做验证码检验。包括是否正确与过期等。
  */
-
+@Slf4j
 public class ValidateCodeFilter extends OncePerRequestFilter {
 
     private JwtUtil jwtUtil= (JwtUtil) GetBean.getBean("jwtUtil");
@@ -42,6 +43,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
             }
             //验证码验证成功，放行
             filterChain.doFilter(httpServletRequest,httpServletResponse);
+            return;
         }
         if(StringUtils.equals("/auth/sms",httpServletRequest.getRequestURI())){
             filterChain.doFilter(httpServletRequest,httpServletResponse);
