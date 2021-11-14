@@ -19,9 +19,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
-
 /**
- * 手机验证码过滤器，拦截的请求为/xx/xx(登录接口)请求方式为POST请求，做验证码检验。包括是否正确与过期等。
+ * @Author ZhuGuangLiang
+ * @Description 最先拦截的过滤链
+ * @Date 17:58 2021/11/12
  */
 @Slf4j
 public class ValidateCodeFilter extends OncePerRequestFilter {
